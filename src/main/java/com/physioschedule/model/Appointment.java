@@ -15,13 +15,19 @@ public class Appointment {
     private long id;
 
     private LocalDateTime dateTime;
-    private String patient;
-    private String therapist;
+
+    @ManyToOne
+    @JoinColumn(name = "patient_id", nullable = false)
+    private User patient;
+
+    @ManyToOne
+    @JoinColumn(name = "therapist_id", nullable = false)
+    private User therapist;
 
     @Enumerated(EnumType.STRING)
-    private AppointmentStatus status;
+    private Status status;
 
-    public enum AppointmentStatus {
+    public enum Status {
         SCHEDULED,
         COMPLETED,
         CANCELLED,
