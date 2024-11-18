@@ -3,6 +3,7 @@ package com.physioschedule.service;
 import com.physioschedule.exception.EmailAlreadyInUseException;
 import com.physioschedule.model.User;
 import com.physioschedule.repository.UserRepository;
+import com.physioschedule.testfactory.UserFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -14,6 +15,16 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * Tests for the UserService class.
+ * <p>
+ * The tests use a default user with the following properties:
+ * - Name: John Doe
+ * - Email: johndoe@test.com
+ * - Password: password1234
+ * - Phone: 123456789
+ * - Role: PATIENT
+ */
 public class UserServiceTest {
 
     @Mock
@@ -29,12 +40,7 @@ public class UserServiceTest {
 
     @Test
     void testRegisterUser_Success() {
-        User newUser = new User();
-        newUser.setName("John Doe");
-        newUser.setEmail("johndoe@test.com");
-        newUser.setPassword("password1234");
-        newUser.setPhoneNumber("1234567890");
-        newUser.setRole(User.Role.PATIENT);
+        User newUser = UserFactory.createDefaultUser();
 
         when(userRepository.findByEmail("johndoe@test.com")).thenReturn(Optional.empty());
         when(userRepository.save(any(User.class))).thenAnswer(i -> i.getArgument(0));
@@ -50,8 +56,7 @@ public class UserServiceTest {
 
     @Test
     void testRegisteredUser_EmailAlreadyInUse() {
-        User newUser = new User();
-        newUser.setEmail("johndoe@test.com");
+        User newUser = UserFactory.createDefaultUser();
 
         when(userRepository.findByEmail("johndoe@test.com")).thenReturn(Optional.of(new User()));
 
@@ -67,9 +72,7 @@ public class UserServiceTest {
 
     @Test
     void testRegisterUser_PasswordIsEncoded() {
-        User newUser = new User();
-        newUser.setPassword("password1234");
-        newUser.setEmail("johndoe@test.com");
+        User newUser = UserFactory.createDefaultUser();
 
         when(userRepository.findByEmail("johndoe@test.com")).thenReturn(Optional.empty());
         when(userRepository.save(any(User.class))).thenAnswer(invocation -> invocation.getArgument(0));
