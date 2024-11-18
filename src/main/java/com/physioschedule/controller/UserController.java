@@ -23,7 +23,7 @@ public class UserController {
         user.setPhoneNumber(userDTO.getPhoneNumber());
         user.setRole(userDTO.getRole());
 
-        User savedUser = userService.RegisterUser(user);
+        User savedUser = userService.registerUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
     }
 
