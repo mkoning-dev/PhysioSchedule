@@ -40,6 +40,10 @@ public class AppointmentService {
         return appointmentRepository.findByPatientId(patientId);
     }
 
+    public List<Appointment> getAppointmentsByDateRange(LocalDateTime start, LocalDateTime end) {
+        return appointmentRepository.findByDateTimeBetween(start, end);
+    }
+
     @Transactional
     public Appointment updateAppointmentStatus(Long appointmentId, Appointment.Status status) {
         Appointment appointment = appointmentRepository.findById(appointmentId)
