@@ -1,15 +1,14 @@
 package com.physioschedule.service;
 
-import physioschedule.exception.EmailAlreadyInUseException;
-import physioschedule.model.User;
-import physioschedule.repository.UserRepository;
+import com.physioschedule.exception.EmailAlreadyInUseException;
+import com.physioschedule.model.User;
+import com.physioschedule.repository.UserRepository;
 import com.physioschedule.testfactory.UserFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import physioschedule.service.UserService;
 
 import java.util.Optional;
 

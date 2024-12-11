@@ -1,6 +1,6 @@
 package com.physioschedule.testfactory;
 
-import physioschedule.model.User;
+import com.physioschedule.model.User;
 
 public class UserFactory {
 

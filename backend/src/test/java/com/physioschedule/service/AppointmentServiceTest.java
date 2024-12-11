@@ -1,15 +1,14 @@
 package com.physioschedule.service;
 
-import physioschedule.model.Appointment;
-import physioschedule.model.User;
-import physioschedule.repository.AppointmentRepository;
+import com.physioschedule.model.Appointment;
+import com.physioschedule.model.User;
+import com.physioschedule.repository.AppointmentRepository;
 import com.physioschedule.testfactory.UserFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import physioschedule.service.AppointmentService;
 
 import java.time.LocalDateTime;
 
